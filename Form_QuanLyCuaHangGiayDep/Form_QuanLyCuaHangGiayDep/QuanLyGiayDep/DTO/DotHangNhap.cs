@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Data;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace QuanLyGiayDep.DTO
+{
+	public class DotHangNhap
+	{
+		//ID INT IDENTITY(1,1) PRIMARY KEY,
+		//NgayLap DATE,
+		//NguoiLap NVARCHAR(50) REFERENCES TaiKhoan(TenDangNhap),
+		//NhaCungCapID INT REFERENCES NhaCungCap(ID),
+		//TongTien FLOAT,
+		//GiamGia FLOAT,
+		//TrangThaiHoaDonNhap NVARCHAR(50)
+		int iD;
+		DateTime ngayLap;
+		string nguoiLap;
+		int nhaCungCapID;
+		float tongTien;
+		float giamGia;
+		string trangThaiHoaDonNhap;
+		public int ID { get => iD; set => iD = value; }
+		public DateTime NgayLap { get => ngayLap; set => ngayLap = value; }
+		public string NguoiLap { get => nguoiLap; set => nguoiLap = value; }
+		public int NhaCungCapID { get => nhaCungCapID; set => nhaCungCapID = value; }
+		public float TongTien { get => tongTien; set => tongTien = value; }
+		public float GiamGia { get => giamGia; set => giamGia = value; }
+		public string TrangThaiHoaDonNhap { get => trangThaiHoaDonNhap; set => trangThaiHoaDonNhap = value; }
+		public DotHangNhap(int iD, DateTime ngayLap, string nguoiLap, int nhaCungCapID, float tongTien, float giamGia, string trangThaiDonHang)
+		{
+			ID = iD;
+			NgayLap = ngayLap;
+			NguoiLap = nguoiLap;
+			NhaCungCapID = nhaCungCapID;
+			TongTien = tongTien;
+			GiamGia = giamGia;
+			TrangThaiHoaDonNhap = trangThaiHoaDonNhap;
+		}
+		public DotHangNhap(DataRow row)
+		{
+			ID = (int)row["ID"];
+			NgayLap = (DateTime)row["NgayLap"];
+			NguoiLap = row["NguoiLap"].ToString();
+			NhaCungCapID = (int)row["NhaCungCapID"];
+			TongTien = (float)Convert.ToDouble(row["TongTien"]);
+			GiamGia = (float)Convert.ToDouble(row["GiamGia"]);
+			TrangThaiHoaDonNhap = row["TrangThaiHoaDonNhap"].ToString();
+		}
+	}
+}
